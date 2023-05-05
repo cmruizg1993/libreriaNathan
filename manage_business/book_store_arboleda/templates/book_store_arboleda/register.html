@@ -1,0 +1,60 @@
+{% extends "book_store_arboleda/base.html" %}
+{% load widget_tweaks %}
+{% load static%}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_store_arboleda/register.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h2>Create User and Customer Account</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <form id="user-form" method="POST" action="">
+          {% csrf_token %}
+          <div class="form-control">
+            {{ form.username|attr:"placeholder:User Name"|add_class:"form-control" }}
+            {{ form.first_name|attr:"placeholder:First Name"|add_class:"form-control"|attr:"required:true" }}
+            {{ form.last_name|attr:"placeholder:Last Name"|add_class:"form-control"|attr:"required:true" }}
+            {{ form.email|attr:"placeholder:Email"|add_class:"form-control"|attr:"required:true" }}
+            {{ form.password1|attr:"placeholder:Password"|add_class:"form-control"|attr:"required:true" }}
+            {{ form.password2|attr:"placeholder:Re-enter Password"|add_class:"form-control"|attr:"required:true" }}
+            {{ form.errors }}
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form id="cust-form" method="POST" action="">
+          {% csrf_token %}
+          <div class="form-control">
+            {{ cust_form.name|attr:"placeholder:Name"|add_class:"form-control"|attr:"required:true" }}
+            {{ cust_form.phone|attr:"placeholder:Phone Number"|add_class:"form-control"|attr:"required:true" }}
+            {{ cust_form.email|attr:"placeholder:Email"|add_class:"form-control"|attr:"required:true" }}
+            {{ cust_form.errors }}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <button class="button" type="button" onclick="submitForms()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function submitForms() {
+  document.getElementById("user-form").submit();
+  document.getElementById("cust-form").submit();
+}
+</script>
+{% endblock %}
+
+
+
+
+
+
+

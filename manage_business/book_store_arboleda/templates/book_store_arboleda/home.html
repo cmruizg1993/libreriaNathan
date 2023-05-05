@@ -1,0 +1,63 @@
+{% extends "book_store_arboleda/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    {% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/book_store_arboleda/jumbotronHome.css' %}">
+    {% endblock %}
+
+    <script src="{% static 'js/book_store_arboleda/navbar_dynamics.js' %}"></script>
+</head>
+
+{% block content %}
+ 
+<br>
+ 
+<div class="container">
+    <div class="jumbotron">
+        <div class="col-lg-10">
+            <h3>BOOKS:</h3>
+            <div class="card card-body">
+                <table class="table-table-sm">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Edition</th>
+                        {% if user.is_authenticated %}
+                        <th>Option</th>
+                        {% endif %}
+                        
+                    </tr>
+                    {% for book in books %}
+                    <tr>
+                        <td><b>{{book.title}}</b> </td>
+                        <td>{{book.Author}} </td>
+                        <td>{{book.Price}} </td>
+                        <td> {{book.Edition}} </td>
+                        {% if user.is_authenticated and not user.is_staff%}
+                        <td><a class="btn btn-sm btn-info" href="{% url 'addtocart' book.id %}">Add to cart</a> </td>
+                        
+                        {% endif %}
+                        {% if user.is_staff %}
+                        <td><a class="btn btn-sm btn-info" href="{% url 'updateBook' book.id %}">Update</a> </td>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'deleteBook' book.id %}">Delete</a> </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div> 
+</div>
+ 
+{% endblock %}
+
+</body>
+</html>

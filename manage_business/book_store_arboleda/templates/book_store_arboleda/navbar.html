@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_store_arboleda/navbar1.css' %}">
+{% endblock %}
+
+</head>
+<body>
+  {% block content %}
+  <nav class="navbar">
+    <ul>
+      <li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+      {% if request.user.is_staff %}
+      <li><a class="nav-link" href="{% url 'addbook' %}">Add Books</a></li>
+      {% else %}
+      <li><a class="nav-link" href="{% url 'viewcart' %}">Cart</a></li>
+      {% endif %}
+      <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+    
+    </ul>
+
+    <div class="navbar-right">
+      <span class="hello-msg">Hello, {{request.user}}</span>
+      <span><a class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+    </div>
+
+  </nav>
+
+
+  {% endblock %}
+
+
+</body>
+</html>
+
+

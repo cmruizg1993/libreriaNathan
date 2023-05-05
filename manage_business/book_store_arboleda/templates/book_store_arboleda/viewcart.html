@@ -1,0 +1,45 @@
+{% extends "book_store_arboleda/base.html" %}
+{% load static%}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/book_store_arboleda/jumbotronCart.css' %}">
+{% endblock %}
+
+{% block content %}
+ 
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+                {% if carts %}
+            {% for cart in carts %}
+                <h3>Cart {{forloop.counter}}:</h3>
+                <div class="card card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                            <th>Edition</th>
+                            <th>Option</th>
+                        </tr>
+                        {% for book in cart.books.all %}
+                        <tr>
+                            <td>{{book.title}} </td>
+                            <td>{{book.Author}} </td>
+                            <td>{{book.Price}} </td>
+                            <td>{{book.Edition}} </td>
+
+                            <td><a class="btn btn-sm btn-info" href="{% url 'removeBookCustomer' book.id %}">Remove</a> </td>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

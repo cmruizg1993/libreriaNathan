@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+.jumbotron {
+    background-color: #e9ecef;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 3rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  }
+
+table, th, td {
+    
+    border: 1px solid;
+    padding: 10px;
+  }
+
+  
+table {
+    border: 2px solid;
+    margin: 5px;
+  }

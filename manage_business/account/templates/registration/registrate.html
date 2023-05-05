@@ -1,0 +1,52 @@
+{% extends "book_store_arboleda/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/account/registrateOnline.css' %}">
+    {% endblock %}
+
+
+
+</head>
+<body>
+    {% block content %}
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form action="{% url 'registrate' %}" method="post">
+                    {% csrf_token %}
+					<label for="chk" aria-hidden="true">Sign up</label>
+                    {{ form.username|attr:"placeholder:User Name"|add_class:"form-control" }}
+                    {{ form.first_name|attr:"placeholder:First Name"|add_class:"form-control" }}
+                    {{ form.last_name|attr:"placeholder:Last Name"|add_class:"form-control" }}
+                    {{ form.email|attr:"placeholder:Email"|add_class:"form-control" }}
+                    {{ form.password1|attr:"placeholder:Password"|add_class:"form-control" }}
+                    {{ form.password2|attr:"placeholder:Re enter password"|add_class:"form-control" }}
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="username" name="username" placeholder="Username" required="">
+					<input type="password" name="password" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+    {% endblock %}
+</body>
+
+</html>

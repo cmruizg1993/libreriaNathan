@@ -1,0 +1,19 @@
+{% extends "book_store_arboleda/base.html" %}
+{% load static%}
+
+
+{% block content %}
+<div class="container jumbotron">
+    {% for cart in carts %}
+    <h2>Cart {{ forloop.counter }}</h2>
+    <ul>
+        {% for book in cart.books.all %}
+            <li>{{ book.title }}</li>
+        {% endfor %}
+    </ul>
+{% empty %}
+    <p>Your cart is empty.</p>
+{% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343a40;
+    padding: 10px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0 10px;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .hello-msg {
+    color: #fff;
+    padding-right: 20px;
+    margin-left: 20px;
+  }
+
+  .navbar-right {
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-right span {
+    margin-left: 20px;
+    
+  }
+  
